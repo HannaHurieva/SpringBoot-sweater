@@ -24,23 +24,14 @@ public class GreetingController {
     // @RequestParam связывает значение строкового параметра name запроса с name параметром метода greeting().
     // Этот параметр не required; если он отсутствует в запросе, то будет использовано defaultValue значение "World".
 
-    @GetMapping("/greeting") // Map ONLY GET Requests
+    @GetMapping("/") // Map ONLY GET Requests
 
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
-                           Map<String, Object> model) {
-        // Model model - используем с thymeleaf, при использовании mustache - заменяем на Map<>
-        // Значение параметра name добавлено в объект Model, что делает его доступным в шаблоне представления.
-        // model.addAttribute - используем с thymeleaf, при использовании mustache - заменяем на put
-
-        model.put("name", name);
+    public String greeting(Map<String, Object> model) {
 
         return "greeting";
-
-        // TEST - Подставьте параметр name в строку запроса http://localhost:8080/greeting?name=User.
-        // Обратите внимание как изменится сообщение с "Hello, World!" на "Hello, User!":
     }
 
-    @GetMapping
+    @GetMapping("/main")
     // @GetMapping is a shortcut for @RequestMapping(method=GET)
 
     public String main(Map<String, Object> model) {
@@ -52,7 +43,7 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping
+    @PostMapping("/main")
     // @RequestParam means it is a parameter from the GET or POST request
     public String add(@RequestParam String text,
                       @RequestParam String tag,
@@ -67,7 +58,7 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping("filter")
+    @PostMapping("/filter")
     public String filter(@RequestParam String filter,
                          Map<String, Object> model) {
         Iterable<Message> messages;

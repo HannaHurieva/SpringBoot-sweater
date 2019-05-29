@@ -19,7 +19,9 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- https://gist.github.com/drucoder/6b9e912701e7c2f9c1e99a229c0eb22e -->
+        <!-- https://o7planning.org/ru/11801/spring-boot-and-mustache-tutorial -->
+        <!-- http://mustache.github.io/mustache.5.html -->
+        <!-- Web Template MUSTACHE-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mustache</artifactId>
@@ -41,17 +43,23 @@
             <scope>test</scope>
         </dependency>
 
-
+        <!-- JPA-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-
         </dependency>
 
+        <!-- Database MySQL-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.15</version>
+        </dependency>
+
+        <!-- Security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
     </dependencies>
 
