@@ -1,4 +1,4 @@
-package com.alevel.springMVC.sweater;
+package com.alevel.springMVC.sweater.controller;
 
 
 import com.alevel.springMVC.sweater.domain.Message;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 
 @Controller // This means that this class is a Controller
-public class GreetingController {
+public class MainController {
     // @Controller - модуль программы, который слушает запросы по пути "/greeting" и возвращает значение "name"
 
     // This means to get the bean called messageRepo
@@ -25,15 +25,12 @@ public class GreetingController {
     // Этот параметр не required; если он отсутствует в запросе, то будет использовано defaultValue значение "World".
 
     @GetMapping("/") // Map ONLY GET Requests
-
     public String greeting(Map<String, Object> model) {
-
         return "greeting";
     }
 
-    @GetMapping("/main")
     // @GetMapping is a shortcut for @RequestMapping(method=GET)
-
+    @GetMapping("/main")
     public String main(Map<String, Object> model) {
         Iterable<Message> messages = messageRepo.findAll();
         // This returns a JSON or XML with the messages
@@ -43,8 +40,8 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping("/main")
     // @RequestParam means it is a parameter from the GET or POST request
+    @PostMapping("/main")
     public String add(@RequestParam String text,
                       @RequestParam String tag,
                       Map<String, Object> model) {
@@ -58,7 +55,7 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping("/filter")
+    @PostMapping("filter")
     public String filter(@RequestParam String filter,
                          Map<String, Object> model) {
         Iterable<Message> messages;
